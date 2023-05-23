@@ -1,0 +1,12 @@
+C:\Users\moran\aplicacionUrban\Biblio_login\bin\Debug\net6.0\Biblio_login.deps.json
+C:\Users\moran\aplicacionUrban\Biblio_login\bin\Debug\net6.0\Biblio_login.dll
+C:\Users\moran\aplicacionUrban\Biblio_login\bin\Debug\net6.0\Biblio_login.pdb
+C:\Users\moran\aplicacionUrban\Biblio_login\obj\Debug\net6.0\Biblio_login.csproj.AssemblyReference.cache
+C:\Users\moran\aplicacionUrban\Biblio_login\obj\Debug\net6.0\Biblio_login.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\moran\aplicacionUrban\Biblio_login\obj\Debug\net6.0\Biblio_login.AssemblyInfoInputs.cache
+C:\Users\moran\aplicacionUrban\Biblio_login\obj\Debug\net6.0\Biblio_login.AssemblyInfo.cs
+C:\Users\moran\aplicacionUrban\Biblio_login\obj\Debug\net6.0\Biblio_login.csproj.CoreCompileInputs.cache
+C:\Users\moran\aplicacionUrban\Biblio_login\obj\Debug\net6.0\Biblio_login.dll
+C:\Users\moran\aplicacionUrban\Biblio_login\obj\Debug\net6.0\refint\Biblio_login.dll
+C:\Users\moran\aplicacionUrban\Biblio_login\obj\Debug\net6.0\Biblio_login.pdb
+C:\Users\moran\aplicacionUrban\Biblio_login\obj\Debug\net6.0\ref\Biblio_login.dll
