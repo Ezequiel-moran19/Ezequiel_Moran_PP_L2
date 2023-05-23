@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "86ZB3nR9Wza7uDB/YBBOEARbjLUhQc7GULpcmz3c63m62z83oN0MFRbRojWUyVWTi9iqpuyb20SOpqjhgArYUA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\moran\\aplicacionUrban\\Urban\\Urban.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\moran\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

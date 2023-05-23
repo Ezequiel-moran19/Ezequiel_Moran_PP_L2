@@ -1,0 +1,4 @@
+Eze,123,Administrador
+Roman,asd,Vendedor
+Nato,sdas,Vendedor
+Roro,asd,Vendedor
