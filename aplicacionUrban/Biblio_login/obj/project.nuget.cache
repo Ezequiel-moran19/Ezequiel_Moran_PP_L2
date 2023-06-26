@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oZTPZwA4W9i8YMZNv/QdqWQPEkFuqqSbdQJzUzkqC7PVG9ZzyHc9ncSrl7lEXpIx9a0Wi9Ga8KCd5b5yCxbM8Q==",
+  "dgSpecHash": "bC3UU2soUZ8U2Iu6DY4mglNMmia+kni9jiZ0io/tw3mxYL/NdywTCDUV+GUuvpCGhU9yrd7bSZw+BoOAjsQH3g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\moran\\aplicacionUrban\\Biblio_login\\Biblio_login.csproj",
+  "projectFilePath": "C:\\Users\\moran\\Ezequiel_Moran_PP_L2\\aplicacionUrban\\Biblio_login\\Biblio_login.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\moran\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],

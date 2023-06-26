@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "86ZB3nR9Wza7uDB/YBBOEARbjLUhQc7GULpcmz3c63m62z83oN0MFRbRojWUyVWTi9iqpuyb20SOpqjhgArYUA==",
+  "dgSpecHash": "5eKlfPPaxP+wLmrD8zLTKqa+qwCpytR5tsoqVz61A8UtzyEhGfbX08l/PRJGVAR3sdRbLukHs7nkpa5Bt2RZcw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\moran\\aplicacionUrban\\Urban\\Urban.csproj",
+  "projectFilePath": "C:\\Users\\moran\\Ezequiel_Moran_PP_L2\\aplicacionUrban\\Urban\\Urban.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\moran\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],

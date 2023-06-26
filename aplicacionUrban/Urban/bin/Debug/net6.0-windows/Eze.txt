@@ -1,0 +1,14 @@
+CodigoCompra,Tipo,Cantidad,Fecha,Monto
+#1,Camperas,1,23/6/2023,$83208
+#2,Zapatos,8,14/6/2023,$41602
+#3,Pantalones,9,3/6/2023,$79926
+#4,Pantalones,7,10/6/2023,$81430
+#5,Camisetas,6,25/6/2023,$54615
+#6,Zapatos,7,8/6/2023,$81057
+#7,Camperas,6,30/5/2023,$39966
+#8,Camperas,4,16/6/2023,$48688
+#9,Zapatos,9,30/5/2023,$22909
+#10,Camisetas,8,3/6/2023,$3414
+#11,Camperas,9,24/6/2023,$62981
+#12,Camisetas,9,21/6/2023,$79899
+#13,Camisetas,6,31/5/2023,$50309

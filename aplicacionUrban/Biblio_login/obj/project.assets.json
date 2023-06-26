@@ -60,11 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\moran\\aplicacionUrban\\Biblio_login\\Biblio_login.csproj",
+      "projectUniqueName": "C:\\Users\\moran\\Ezequiel_Moran_PP_L2\\aplicacionUrban\\Biblio_login\\Biblio_login.csproj",
       "projectName": "Biblio_login",
-      "projectPath": "C:\\Users\\moran\\aplicacionUrban\\Biblio_login\\Biblio_login.csproj",
+      "projectPath": "C:\\Users\\moran\\Ezequiel_Moran_PP_L2\\aplicacionUrban\\Biblio_login\\Biblio_login.csproj",
       "packagesPath": "C:\\Users\\moran\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\moran\\aplicacionUrban\\Biblio_login\\obj\\",
+      "outputPath": "C:\\Users\\moran\\Ezequiel_Moran_PP_L2\\aplicacionUrban\\Biblio_login\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\moran\\AppData\\Roaming\\NuGet\\NuGet.Config",

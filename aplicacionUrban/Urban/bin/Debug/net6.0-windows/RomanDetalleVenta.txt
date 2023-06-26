@@ -1,3 +1,0 @@
-CodigoCompra,Codigo Producto,Tipo,Cantidad
-#2,C2770,Camisetas,5
-#5,C8135,Camperas,1

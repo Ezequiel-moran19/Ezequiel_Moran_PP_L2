@@ -31,9 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PortalVendedor));
             lblNombreVendedor = new Label();
             label2 = new Label();
-            BtnDetalleVenta = new Button();
             btnConsultarHistorial = new Button();
-            BtnConsultarMontoTotal = new Button();
             menuStrip1 = new MenuStrip();
             cerrarSesionToolStripMenuItem = new ToolStripMenuItem();
             label1 = new Label();
@@ -64,45 +62,18 @@
             label2.TabIndex = 4;
             label2.Text = "Hola, Bienvenido/a";
             // 
-            // BtnDetalleVenta
-            // 
-            BtnDetalleVenta.BackColor = SystemColors.ActiveCaption;
-            BtnDetalleVenta.BackgroundImage = Urban.Properties.Resources.Añadir_un_título__5_;
-            BtnDetalleVenta.BackgroundImageLayout = ImageLayout.Stretch;
-            BtnDetalleVenta.FlatStyle = FlatStyle.Popup;
-            BtnDetalleVenta.Location = new Point(275, 122);
-            BtnDetalleVenta.Name = "BtnDetalleVenta";
-            BtnDetalleVenta.Size = new Size(164, 147);
-            BtnDetalleVenta.TabIndex = 7;
-            BtnDetalleVenta.UseVisualStyleBackColor = false;
-            BtnDetalleVenta.Click += BtnVerDetalleVenta_Click;
-            // 
             // btnConsultarHistorial
             // 
             btnConsultarHistorial.BackColor = SystemColors.ActiveCaption;
             btnConsultarHistorial.BackgroundImage = (Image)resources.GetObject("btnConsultarHistorial.BackgroundImage");
             btnConsultarHistorial.BackgroundImageLayout = ImageLayout.Stretch;
             btnConsultarHistorial.FlatStyle = FlatStyle.Popup;
-            btnConsultarHistorial.Location = new Point(73, 122);
+            btnConsultarHistorial.Location = new Point(230, 125);
             btnConsultarHistorial.Name = "btnConsultarHistorial";
             btnConsultarHistorial.Size = new Size(164, 147);
             btnConsultarHistorial.TabIndex = 11;
             btnConsultarHistorial.UseVisualStyleBackColor = false;
             btnConsultarHistorial.Click += BtnConsultarHistorial_Click;
-            // 
-            // BtnConsultarMontoTotal
-            // 
-            BtnConsultarMontoTotal.BackColor = SystemColors.ActiveCaption;
-            BtnConsultarMontoTotal.BackgroundImage = (Image)resources.GetObject("BtnConsultarMontoTotal.BackgroundImage");
-            BtnConsultarMontoTotal.BackgroundImageLayout = ImageLayout.Stretch;
-            BtnConsultarMontoTotal.FlatStyle = FlatStyle.Popup;
-            BtnConsultarMontoTotal.ForeColor = SystemColors.ActiveCaption;
-            BtnConsultarMontoTotal.Location = new Point(472, 122);
-            BtnConsultarMontoTotal.Name = "BtnConsultarMontoTotal";
-            BtnConsultarMontoTotal.Size = new Size(164, 147);
-            BtnConsultarMontoTotal.TabIndex = 12;
-            BtnConsultarMontoTotal.UseVisualStyleBackColor = false;
-            BtnConsultarMontoTotal.Click += BtnConsultarMontoTotal_Click;
             // 
             // menuStrip1
             // 
@@ -132,9 +103,9 @@
             label1.ForeColor = Color.FromArgb(128, 128, 255);
             label1.Location = new Point(73, 72);
             label1.Name = "label1";
-            label1.Size = new Size(417, 30);
+            label1.Size = new Size(456, 30);
             label1.TabIndex = 14;
-            label1.Text = "elige la opción que deseas realizar.";
+            label1.Text = "para ralizar consulta preciona el boton";
             // 
             // PortalVendedor
             // 
@@ -144,9 +115,7 @@
             BackgroundImage = Urban.Properties.Resources.up__1_2;
             ClientSize = new Size(758, 367);
             Controls.Add(label1);
-            Controls.Add(BtnConsultarMontoTotal);
             Controls.Add(btnConsultarHistorial);
-            Controls.Add(BtnDetalleVenta);
             Controls.Add(label2);
             Controls.Add(lblNombreVendedor);
             Controls.Add(menuStrip1);
@@ -166,9 +135,7 @@
         #endregion
         private Label lblNombreVendedor;
         private Label label2;
-        private Button BtnDetalleVenta;
         private Button btnConsultarHistorial;
-        private Button BtnConsultarMontoTotal;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private Label label1;

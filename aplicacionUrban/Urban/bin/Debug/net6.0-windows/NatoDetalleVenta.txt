@@ -1,2 +1,0 @@
-CodigoCompra,Codigo Producto,Tipo,Cantidad
-#1,Z9929,Zapatos,9

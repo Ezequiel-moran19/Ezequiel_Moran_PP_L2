@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConsultarHistorialVenta));
             dgvHistorialVentas = new DataGridView();
             lblVentas = new Label();
             label1 = new Label();
             menuStrip1 = new MenuStrip();
             VolvelToolStripMenuItem = new ToolStripMenuItem();
+            btnCredito = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvHistorialVentas).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -41,10 +43,10 @@
             // 
             dgvHistorialVentas.BackgroundColor = Color.Silver;
             dgvHistorialVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHistorialVentas.Location = new Point(12, 57);
+            dgvHistorialVentas.Location = new Point(0, 57);
             dgvHistorialVentas.Name = "dgvHistorialVentas";
             dgvHistorialVentas.RowTemplate.Height = 25;
-            dgvHistorialVentas.Size = new Size(367, 306);
+            dgvHistorialVentas.Size = new Size(543, 306);
             dgvHistorialVentas.TabIndex = 0;
             // 
             // lblVentas
@@ -89,12 +91,26 @@
             VolvelToolStripMenuItem.Text = "Volver";
             VolvelToolStripMenuItem.Click += VolverToolStripMenuItem_Click;
             // 
+            // btnCredito
+            // 
+            btnCredito.BackColor = Color.FromArgb(255, 192, 128);
+            btnCredito.BackgroundImage = (Image)resources.GetObject("btnCredito.BackgroundImage");
+            btnCredito.BackgroundImageLayout = ImageLayout.Stretch;
+            btnCredito.FlatStyle = FlatStyle.Popup;
+            btnCredito.Location = new Point(608, 264);
+            btnCredito.Name = "btnCredito";
+            btnCredito.Size = new Size(150, 99);
+            btnCredito.TabIndex = 12;
+            btnCredito.UseVisualStyleBackColor = false;
+            btnCredito.Click += btnCredito_Click;
+            // 
             // FormConsultarHistorialVenta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(758, 367);
+            Controls.Add(btnCredito);
             Controls.Add(label1);
             Controls.Add(lblVentas);
             Controls.Add(dgvHistorialVentas);
@@ -120,5 +136,6 @@
         private Label label1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem VolvelToolStripMenuItem;
+        private Button btnCredito;
     }
 }

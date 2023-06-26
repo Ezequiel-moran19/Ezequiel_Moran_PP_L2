@@ -7,9 +7,6 @@ namespace Urban
         public Login loginForm;
         public PortalAdmin portalAdminForm;
         public PortalVendedor portalVendedorForm;
-        /// <summary>
-        /// Constructor de la clase Contenedor.
-        /// </summary>
         public Contenedor()
         {
             InitializeComponent();
@@ -30,7 +27,6 @@ namespace Urban
                 loginForm.BringToFront();
             }
         }
-
         private void Btn_salir_Click(object sender, EventArgs e)
         {
             this.Close();

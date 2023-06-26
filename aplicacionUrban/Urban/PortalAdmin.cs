@@ -8,7 +8,6 @@ namespace web_login
         private readonly List<Usuario> usuarios = new();
 
         private Administrador usuariosService;
-        private readonly ArchivoUsuarios archivoUsuarios;
         public Usuario UsuarioLogueado { get; set; }
         public List<Usuario> Usuarios { get; set; }
         public PortalAdmin()
@@ -16,13 +15,12 @@ namespace web_login
             InitializeComponent();
             this.usuariosService = new Administrador(usuarios);
             Usuarios = usuariosService.ObtenerUsuarios();
-            archivoUsuarios = new ArchivoUsuarios("datos.txt");
             ActualizarListaUsuarios();
         }
         /// <summary>
-        /// Constructor de la clase PortalAdmin que recibe una lista de usuarios.
+        /// Constructor sobrecargado de la clase PortalAdmin.
         /// </summary>
-        /// <param name="usuarios">La lista de usuarios a agregar en el portal.</param>
+        /// <param name="usuarios">La lista de usuarios a agregar.</param>
         public PortalAdmin(List<Usuario> usuarios) : this()
         {
             foreach (Usuario usuario in usuarios)
@@ -46,22 +44,18 @@ namespace web_login
             }
         }
         /// <summary>
-        /// Guarda la lista de usuarios en un archivo.
+        /// Guarda los usuarios en el archivo.
         /// </summary>
         public void GuardarUsuariosEnArchivo()
         {
-            archivoUsuarios.GuardarUsuariosEnArchivo(Usuarios);
+            ArchivoUsuarios.GuardarUsuariosEnArchivo(Usuarios);
         }
-        /// <summary>
-        /// Maneja el evento Click del botón "Agregar Usuario" en el menú.
-        /// Abre el formulario para agregar un nuevo usuario y agrega el usuario a la lista de usuarios del portal.
-        /// </summary>
         private void AgregarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FormAgregarUsuario formAgregarUsuario = new(this);
             formAgregarUsuario.Show();
 
-            Usuario nuevoUsuario = new Vendedor(formAgregarUsuario.Nombre, formAgregarUsuario.Contraseña);
+            Usuario nuevoUsuario = new Vendedor(formAgregarUsuario.Nombre, formAgregarUsuario.Contraseña, formAgregarUsuario.Rol);
 
             Administrador usuariosService = new();
             usuariosService.AgregarUsuario(nuevoUsuario.Nombre, nuevoUsuario.Contraseña, nuevoUsuario.Rol);
@@ -69,25 +63,18 @@ namespace web_login
             ActualizarListaUsuarios();
             GuardarUsuariosEnArchivo();
         }
-        /// <summary>
-        /// Maneja el evento Click del botón "Eliminar Usuario" en el menú.
-        /// Elimina el usuario seleccionado de la lista de usuarios del portal y del archivo correspondiente.
-        /// </summary>
         private void EliminarToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (lstUsuarios.SelectedItem != null)
             {
                 Usuario usuarioSeleccionado = (Usuario)lstUsuarios.SelectedItem;
+                usuariosService.EliminarUsuario(usuarioSeleccionado);
 
-                Usuarios.Remove(usuarioSeleccionado);
                 ActualizarListaUsuarios();
 
-                string archivoUsuario = $"{usuarioSeleccionado.Nombre}.txt";
-                if (File.Exists(archivoUsuario))
-                {
-                    File.Delete(archivoUsuario);
-                    MessageBox.Show("Usuario eliminado correctamente.");
-                }
+                string nombre= ArchivoUsuarios.ObtenerNombreArchivoUsuario(usuarioSeleccionado);
+                ArchivoUsuarios.EliminarArchivo(nombre);
+                MessageBox.Show("Usuario eliminado correctamente.");
 
                 GuardarUsuariosEnArchivo();
             }
@@ -96,11 +83,6 @@ namespace web_login
                 MessageBox.Show("Debes seleccionar un usuario para eliminar.");
             }
         }
-        /// <summary>
-        /// Maneja el evento Click del botón "Atrás" en el menú.
-        /// Cierra el formulario actual.
-        /// </summary>
-
         private void AtrasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -78,11 +78,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\moran\\aplicacionUrban\\Urban\\Urban.csproj",
+      "projectUniqueName": "C:\\Users\\moran\\Ezequiel_Moran_PP_L2\\aplicacionUrban\\Urban\\Urban.csproj",
       "projectName": "Urban",
-      "projectPath": "C:\\Users\\moran\\aplicacionUrban\\Urban\\Urban.csproj",
+      "projectPath": "C:\\Users\\moran\\Ezequiel_Moran_PP_L2\\aplicacionUrban\\Urban\\Urban.csproj",
       "packagesPath": "C:\\Users\\moran\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\moran\\aplicacionUrban\\Urban\\obj\\",
+      "outputPath": "C:\\Users\\moran\\Ezequiel_Moran_PP_L2\\aplicacionUrban\\Urban\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\moran\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -99,8 +99,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\moran\\aplicacionUrban\\Biblio_login\\Biblio_login.csproj": {
-              "projectPath": "C:\\Users\\moran\\aplicacionUrban\\Biblio_login\\Biblio_login.csproj"
+            "C:\\Users\\moran\\Ezequiel_Moran_PP_L2\\aplicacionUrban\\Biblio_login\\Biblio_login.csproj": {
+              "projectPath": "C:\\Users\\moran\\Ezequiel_Moran_PP_L2\\aplicacionUrban\\Biblio_login\\Biblio_login.csproj"
             }
           }
         }

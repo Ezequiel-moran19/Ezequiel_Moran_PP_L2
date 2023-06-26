@@ -1,0 +1,4 @@
+CodigoCompra,Tipo,Cantidad,Fecha,Monto
+#1,Zapatos,8,21/6/2023,$20328
+#2,Camisetas,4,21/6/2023,$77598
+#3,Zapatos,1,21/6/2023,$52391

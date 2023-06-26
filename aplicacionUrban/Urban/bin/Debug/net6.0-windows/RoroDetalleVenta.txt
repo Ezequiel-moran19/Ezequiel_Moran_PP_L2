@@ -1,2 +1,0 @@
-CodigoCompra,Codigo Producto,Tipo,Cantidad
-#3,P7879,Pantalones,5

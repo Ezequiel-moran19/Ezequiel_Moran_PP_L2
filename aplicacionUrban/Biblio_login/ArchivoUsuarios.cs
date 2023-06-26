@@ -2,27 +2,15 @@
 
 namespace Biblio_Login
 {
-    public class ArchivoUsuarios
+    public static class ArchivoUsuarios
     {
 
-        private readonly string rutaArchivo;
+        public static string RutaArchivo => $"datos.txt";
         /// <summary>
-        /// Constructor de la clase ArchivoUsuarios.
+        /// Obtiene la lista de usuarios almacenados en el archivo.
         /// </summary>
-        /// <param name="rutaArchivo">Ruta del archivo de usuarios.</param>
-        public ArchivoUsuarios(string rutaArchivo)
-        {
-            this.rutaArchivo = rutaArchivo;
-        }
-        /// <summary>
-        /// Ruta del archivo de usuarios.
-        /// </summary>
-        public string RutaArchivo => rutaArchivo;
-        /// <summary>
-        /// Obtiene la lista de usuarios desde el archivo.
-        /// </summary>
-        /// <returns>Lista de usuarios.</returns>
-        public List<Usuario> ObtenerUsuarios()
+        /// <returns>La lista de usuarios.</returns>
+        public static List<Usuario> ObtenerUsuarios()
         {
             try
             {
@@ -35,16 +23,38 @@ namespace Biblio_Login
                  throw new Exception("Error al leer el archivo de usuarios: " + error.Message);
             }
         }
-        public string[] LeerLineasArchivo()
+        /// <summary>
+        /// Lee las líneas del archivo y las retorna como un arreglo de cadenas.
+        /// </summary>
+        /// <returns>Un arreglo de cadenas que representa las líneas del archivo.</returns>
+        public static string[] LeerLineasArchivo()
         {
             return File.ReadAllLines(RutaArchivo);
         }
-
+        /// <summary>
+        /// Verifica si existe un archivo en la ruta especificada.
+        /// </summary>
+        /// <param name="rutaArchivo">La ruta del archivo.</param>
+        /// <returns>true si el archivo existe, de lo contrario false.</returns>
+        public static bool ExisteArchivo(string rutaArchivo)
+        {
+            return File.Exists(rutaArchivo);
+        }
+        /// <summary>
+        /// Crea un objeto Usuario a partir de los campos obtenidos de una línea.
+        /// </summary>
+        /// <param name="campos">Los campos obtenidos de una línea del archivo.</param>
+        /// <returns>Un objeto Usuario.</returns>
         private static Usuario CrearUsuarioDesdeCampos(string[] campos)
         {
             var rol = (RolUsuario)Enum.Parse(typeof(RolUsuario), campos[2], true);
-            return new Usuario(campos[0], campos[1], rol);
+            return new Vendedor(campos[0], campos[1], rol);
         }
+        /// <summary>
+        /// Crea una lista de usuarios a partir de las líneas del archivo.
+        /// </summary>
+        /// <param name="lineas">Las líneas del archivo.</param>
+        /// <returns>Una lista de usuarios.</returns>
         private static List<Usuario> CrearUsuariosDesdeLineas(string[] lineas)
         {
             List<Usuario> usuarios = new();
@@ -64,8 +74,8 @@ namespace Biblio_Login
         /// <summary>
         /// Guarda la lista de usuarios en el archivo.
         /// </summary>
-        /// <param name="usuarios">Lista de usuarios.</param>
-        public void GuardarUsuariosEnArchivo(List<Usuario> usuarios)
+        /// <param name="usuarios">La lista de usuarios a guardar.</param>
+        public static void GuardarUsuariosEnArchivo(List<Usuario> usuarios)
         {
             using StreamWriter writer = new(RutaArchivo);
             foreach (Usuario usuario in usuarios)
@@ -73,13 +83,25 @@ namespace Biblio_Login
                 writer.WriteLine($"{usuario.Nombre},{usuario.Contraseña},{usuario.Rol}");
             }
         }
-        public void CrearArchivoSiNoExiste(string rutaArchivo)
+        /// <summary>
+        /// Elimina el archivo en la ruta especificada.
+        /// </summary>
+        /// <param name="rutaArchivo">La ruta del archivo a eliminar.</param>
+        public static void EliminarArchivo(string rutaArchivo)
         {
-            if (!File.Exists(rutaArchivo))
+            if (ExisteArchivo(rutaArchivo))
             {
-                using StreamWriter file = File.CreateText(rutaArchivo);
-                file.WriteLine("CodigoCompra,Codigo Producto,Tipo,Cantidad");
+                File.Delete(rutaArchivo);
             }
+        }
+        /// <summary>
+        /// Obtiene el nombre del archivo asociado a un usuario.
+        /// </summary>
+        /// <param name="usuario">El usuario del cual se desea obtener el nombre del archivo.</param>
+        /// <returns>El nombre del archivo asociado al usuario.</returns>
+        public static string ObtenerNombreArchivoUsuario(Usuario usuario)
+        {
+            return $"{usuario.Nombre}.txt";
         }
     }
 }

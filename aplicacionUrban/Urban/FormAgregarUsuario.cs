@@ -34,16 +34,19 @@ namespace web_login
                 return;
             }
 
-            Vendedor nuevoVendedor = new(Nombre, Contraseña);
+            Usuario nuevoUsuario = new Vendedor(Nombre, Contraseña, Rol);
 
-            portalAdmin.Usuarios.Add(nuevoVendedor);
+            portalAdmin.Usuarios.Add(nuevoUsuario);
             portalAdmin.ActualizarListaUsuarios();
             portalAdmin.GuardarUsuariosEnArchivo();
 
-            PortalVendedor portalVendedor = Application.OpenForms.OfType<PortalVendedor>().FirstOrDefault();
+            PortalVendedor portalVendedor = new PortalVendedor();
             if (portalVendedor != null)
             {
-                portalVendedor.Vendedor = nuevoVendedor;
+                if (nuevoUsuario is Vendedor vendedor)
+                {
+                    portalVendedor.Vendedor = vendedor;
+                }
             }
             this.Close();
         }
