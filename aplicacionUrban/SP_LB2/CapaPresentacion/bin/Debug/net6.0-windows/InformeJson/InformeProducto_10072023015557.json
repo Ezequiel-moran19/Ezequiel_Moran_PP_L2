@@ -1,0 +1,72 @@
+[
+  {
+    "Codigo": "1111",
+    "Nombre": "Chombita",
+    "Descripcion": "Roja",
+    "Categoria": "Campera",
+    "Stock": "0",
+    "PrecioCompra": "0,00",
+    "PrecioVenta": "0,00",
+    "Estado": "No Activo"
+  },
+  {
+    "Codigo": "1000",
+    "Nombre": "Camisa",
+    "Descripcion": "Verde",
+    "Categoria": "Campera",
+    "Stock": "0",
+    "PrecioCompra": "0,00",
+    "PrecioVenta": "0,00",
+    "Estado": "Activo"
+  },
+  {
+    "Codigo": "1100",
+    "Nombre": "Air",
+    "Descripcion": "max",
+    "Categoria": "Zapatillas",
+    "Stock": "0",
+    "PrecioCompra": "0,00",
+    "PrecioVenta": "0,00",
+    "Estado": "Activo"
+  },
+  {
+    "Codigo": "1223",
+    "Nombre": "X",
+    "Descripcion": "Azul",
+    "Categoria": "Chomba",
+    "Stock": "0",
+    "PrecioCompra": "0,00",
+    "PrecioVenta": "0,00",
+    "Estado": "No Activo"
+  },
+  {
+    "Codigo": "10101",
+    "Nombre": "Chupin",
+    "Descripcion": "Verde",
+    "Categoria": "Gorrito",
+    "Stock": "0",
+    "PrecioCompra": "0,00",
+    "PrecioVenta": "0,00",
+    "Estado": "Activo"
+  },
+  {
+    "Codigo": "0011",
+    "Nombre": "Biru",
+    "Descripcion": "Gris",
+    "Categoria": "Chomba",
+    "Stock": "0",
+    "PrecioCompra": "0,00",
+    "PrecioVenta": "0,00",
+    "Estado": "Activo"
+  },
+  {
+    "Codigo": "1003",
+    "Nombre": "fafa",
+    "Descripcion": "Blanca",
+    "Categoria": "Chomba",
+    "Stock": "0",
+    "PrecioCompra": "0,00",
+    "PrecioVenta": "0,00",
+    "Estado": "Activo"
+  }
+]
