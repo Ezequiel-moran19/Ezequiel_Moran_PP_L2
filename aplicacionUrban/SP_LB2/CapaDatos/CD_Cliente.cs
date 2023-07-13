@@ -11,6 +11,10 @@ namespace CapaDatos
 {
     public class CD_Cliente : IMIInterfaz<Cliente>
     {
+        /// <summary>
+        /// Obtiene una lista de clientes desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de clientes.</returns>
         public List<Cliente> Listar()
         {
             List<Cliente> listaCliente = new List<Cliente>();
@@ -40,6 +44,11 @@ namespace CapaDatos
                 return listaCliente;
             }
         }
+        /// <summary>
+        /// Crea un objeto Cliente a partir de un DataReader.
+        /// </summary>
+        /// <param name="dr">DataReader con los datos del cliente.</param>
+        /// <returns>Objeto Cliente.</returns>
         private Cliente ObtenerClienteDesdeDataReader(SqlDataReader dr)
         {
             int idCliente = Convert.ToInt32(dr["IdCliente"]);
@@ -51,6 +60,12 @@ namespace CapaDatos
             eEstado estadoEnum = estado ? eEstado.Activo : eEstado.NoActivo;
             return new Cliente(idCliente, documento, NombreCompleto, correo, telefono, estadoEnum);
         }
+        /// <summary>
+        /// Registra un nuevo cliente en la base de datos.
+        /// </summary>
+        /// <param name="obj">Objeto Cliente a registrar.</param>
+        /// <param name="Mensaje">Mensaje de resultado de la operación.</param>
+        /// <returns>Id del cliente generado.</returns>
         public int Registrar(Cliente obj, out string Mensaje)
         {
             int idClientegenerado = 0;
@@ -78,7 +93,12 @@ namespace CapaDatos
             }
             return idClientegenerado;
         }
-
+        /// <summary>
+        /// Edita los datos de un cliente en la base de datos.
+        /// </summary>
+        /// <param name="obj">Objeto Cliente a editar.</param>
+        /// <param name="Mensaje">Mensaje de resultado de la operación.</param>
+        /// <returns>Indica si la operación de edición fue exitosa.</returns>
         public bool Editar(Cliente obj, out string Mensaje)
         {
             bool respuesta = false;
@@ -107,6 +127,12 @@ namespace CapaDatos
             }
             return respuesta;
         }
+        /// <summary>
+        /// Elimina un cliente de la base de datos.
+        /// </summary>
+        /// <param name="obj">Objeto Cliente a eliminar.</param>
+        /// <param name="Mensaje">Mensaje de resultado de la operación.</param>
+        /// <returns>Indica si la operación de eliminación fue exitosa.</returns>
         public bool Eliminar(Cliente obj, out string Mensaje)
         {
             bool respuesta = false;
@@ -131,12 +157,21 @@ namespace CapaDatos
             }
             return respuesta;
         }
+        /// <summary>
+        /// Genera la consulta SQL para obtener la lista de clientes.
+        /// </summary>
+        /// <returns>Consulta SQL.</returns>
         public string MostrarConsultas()
         {
             StringBuilder query = new StringBuilder();
             query.AppendLine("select IdCliente,Documento,NombreCompleto,Correo,Telefono,Estado from CLIENTE");
             return query.ToString();
         }
+        /// <summary>
+        /// Configura los parámetros del comando SQL con los datos del cliente.
+        /// </summary>
+        /// <param name="cmd">Comando SQL.</param>
+        /// <param name="obj">Objeto Cliente.</param>
         private void ConfigurarParametros(SqlCommand cmd, Cliente obj)
         {
             cmd.Parameters.AddWithValue("Documento", obj.Documento);

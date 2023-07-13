@@ -13,6 +13,10 @@ namespace CapaDatos
 {
     public class CD_Producto : IMIInterfaz<Producto>
     {
+        /// <summary>
+        /// Obtiene una lista de productos desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de productos.</returns>
         public List<Producto> Listar()
         {
             List<Producto> listaProducto = new List<Producto>();
@@ -42,7 +46,11 @@ namespace CapaDatos
 
             return listaProducto;
         }
-
+        /// <summary>
+        /// Obtiene un objeto Producto a partir de los datos obtenidos desde el SqlDataReader.
+        /// </summary>
+        /// <param name="dr">SqlDataReader con los datos del producto.</param>
+        /// <returns>Objeto Producto.</returns>
         private Producto ObtenerDataReader(SqlDataReader dr)
         {
             int idCategoria = Convert.ToInt32(dr["IdCategoria"]);
@@ -60,7 +68,12 @@ namespace CapaDatos
 
             return new Producto(idProducto, codigo, nombre, descripcion, categoria, stock, precioCompra, precioVenta, estadoEnum);
         }
-
+        /// <summary>
+        /// Registra un nuevo producto en la base de datos.
+        /// </summary>
+        /// <param name="obj">Objeto Producto a registrar.</param>
+        /// <param name="mensaje">Mensaje de resultado de la operación.</param>
+        /// <returns>Id del producto generado.</returns>
         public int Registrar(Producto obj, out string mensaje)
         {
             int idProductoGenerado = 0;
@@ -85,7 +98,12 @@ namespace CapaDatos
 
             return idProductoGenerado;
         }
-
+        /// <summary>
+        /// Edita un producto existente en la base de datos.
+        /// </summary>
+        /// <param name="obj">Objeto Producto a editar.</param>
+        /// <param name="mensaje">Mensaje de resultado de la operación.</param>
+        /// <returns>Indicador de éxito de la operación.</returns>
         public bool Editar(Producto obj, out string mensaje)
         {
             bool respuesta = false;
@@ -111,7 +129,12 @@ namespace CapaDatos
 
             return respuesta;
         }
-
+        /// <summary>
+        /// Elimina un producto de la base de datos.
+        /// </summary>
+        /// <param name="obj">Objeto Producto a eliminar.</param>
+        /// <param name="mensaje">Mensaje de resultado de la operación.</param>
+        /// <returns>Indicador de éxito de la operación.</returns>
         public bool Eliminar(Producto obj, out string mensaje)
         {
             bool respuesta = false;
@@ -137,7 +160,10 @@ namespace CapaDatos
 
             return respuesta;
         }
-
+        /// <summary>
+        /// Genera la consulta SQL para obtener los datos de los productos.
+        /// </summary>
+        /// <returns>Consulta SQL.</returns>
         public string MostrarConsultas()
         {
             StringBuilder query = new StringBuilder();
@@ -147,6 +173,11 @@ namespace CapaDatos
 
             return query.ToString();
         }
+        /// <summary>
+        /// Configura los parámetros de un SqlCommand con los datos del objeto Producto.
+        /// </summary>
+        /// <param name="cmd">SqlCommand a configurar.</param>
+        /// <param name="obj">Objeto Producto.</param>
         private void ConfigurarParametros(SqlCommand cmd, Producto obj)
         {
             cmd.Parameters.AddWithValue("@Codigo", obj.Codigo);
@@ -158,142 +189,3 @@ namespace CapaDatos
     }
 }
 
-/*
- *    public List<Producto> Listar()
-        {
-            List<Producto> listaProducto = new List<Producto>();
-
-            using (SqlConnection connection = Conexion.GetConnection())
-            {
-                try
-                {
-                    SqlCommand cmd = new SqlCommand(MostrarConsultas(), connection);
-                    cmd.CommandType = CommandType.Text;
-
-                    connection.Open();
-
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            listaProducto.Add(ObtenerDataReader(dr));
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    listaProducto = new List<Producto>();
-                }
-                return listaProducto;
-            }
-        }
-        private Producto ObtenerDataReader(SqlDataReader dr)
-        {
-            int idCategoria = Convert.ToInt32(dr["IdCategoria"]);
-            string descripcionCategoria = dr["DescripcionCategoria"].ToString();
-            int IdProducto = Convert.ToInt32(dr["IdProducto"]);
-            string? codigo = dr["Codigo"].ToString();
-            string? nombre = dr["Nombre"].ToString();
-            string? descripcion = dr["Descripcion"].ToString();
-            Categoria categoria = new Categoria(idCategoria, descripcionCategoria);
-            int stock = Convert.ToInt32(dr["Stock"].ToString());
-            decimal precioCompra = Convert.ToDecimal(dr["PrecioCompra"].ToString());
-            decimal precioVenta = Convert.ToDecimal(dr["PrecioVenta"].ToString());
-            bool estado = Convert.ToBoolean(dr["Estado"]);
-            eEstado estadoEnum = estado ? eEstado.Activo : eEstado.NoActivo;
-            return new Producto(IdProducto, codigo, nombre, descripcion, categoria, stock, precioCompra, precioVenta, estadoEnum);
-        }
-        public int Registrar(Producto obj, out string Mensaje)
-        {
-            int idProductogenerado = 0;
-            Mensaje = string.Empty;
-
-            try
-            {
-                using (SqlConnection connection = Conexion.GetConnection())
-                {
-                    SqlCommand cmd = new SqlCommand("SP_RegistrarProducto", connection);
-                    ConfigurarParametros(cmd, obj);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-
-                    idProductogenerado = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
-                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                idProductogenerado = 0;
-                Mensaje = ex.Message;
-            }
-            return idProductogenerado;
-        }
-
-        public bool Editar(Producto obj, out string Mensaje)
-        {
-            bool respuesta = false;
-            Mensaje = string.Empty;
-
-            try
-            {
-                using (SqlConnection connection = Conexion.GetConnection())
-                {
-                    SqlCommand cmd = new SqlCommand("SP_EditarProducto", connection);
-                    cmd.Parameters.AddWithValue("IdProducto", obj.IdProducto);
-                    ConfigurarParametros(cmd, obj);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-
-                    respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
-                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                respuesta = false;
-                Mensaje = ex.Message;
-            }
-            return respuesta;
-        }
-        public bool Eliminar(Producto obj, out string Mensaje)
-        {
-            bool respuesta = false;
-            Mensaje = string.Empty;
-
-            try
-            {
-                using (SqlConnection connection = Conexion.GetConnection())
-                {
-                    SqlCommand cmd = new SqlCommand("SP_EliminarProducto", connection);
-                    cmd.Parameters.AddWithValue("IdProducto", obj.IdProducto);
-                    cmd.Parameters.Add("Respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-
-                    respuesta = Convert.ToBoolean(cmd.Parameters["Respuesta"].Value);
-                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                respuesta = false;
-                Mensaje = ex.Message;
-            }
-            return respuesta;
-        }
-        public string MostrarConsultas()
-        {
-            StringBuilder query = new StringBuilder();
-            query.AppendLine(" select IdProducto, Codigo, Nombre, p.Descripcion,c.IdCategoria,c.Descripcion[DescripcionCategoria],stock,PrecioCompra,PrecioVenta,p.Estado from PRODUCTO p");
-            query.AppendLine("inner join CATEGORIA c on c.IdCategoria = p.IdCategoria");
-            return query.ToString();
-        }
-       
- */

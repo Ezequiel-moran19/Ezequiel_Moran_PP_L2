@@ -12,6 +12,11 @@ namespace CapaDatos
 {
     public class CD_Permiso
     {
+        /// <summary>
+        /// Obtiene una lista de permisos para un usuario específico desde la base de datos.
+        /// </summary>
+        /// <param name="IdUsuario">Id del usuario.</param>
+        /// <returns>Lista de permisos.</returns>
         public List<Permiso> Listar(int IdUsuario)
         {
             List<Permiso> listaUsuario = new List<Permiso>();
@@ -47,7 +52,10 @@ namespace CapaDatos
                 return listaUsuario;
             }
         }
-    
+        /// <summary>
+        /// Genera la consulta SQL para obtener los permisos de un usuario.
+        /// </summary>
+        /// <returns>Consulta SQL.</returns>
         public static string MostrarPermisos() 
         {
             StringBuilder query = new StringBuilder();

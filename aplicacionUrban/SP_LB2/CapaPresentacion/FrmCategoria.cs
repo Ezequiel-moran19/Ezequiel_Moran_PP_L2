@@ -151,16 +151,35 @@ namespace Urban
                 if (indice >= 0)
                 {
                     txtIndice.Text = indice.ToString();
-                    txtId.Text = dgvData.Rows[indice].Cells["Id"].Value.ToString();
-                    txtDescripcion.Text = dgvData.Rows[indice].Cells["Descripcion"].Value.ToString();
+
+                    if (dgvData.Rows[indice].Cells["Id"].Value != null && int.TryParse(dgvData.Rows[indice].Cells["Id"].Value.ToString(), out int id))
+                    {
+                        txtId.Text = id.ToString();
+                    }
+                    else
+                    {
+                        txtId.Text = string.Empty; 
+                    }
+                    if (dgvData.Rows[indice].Cells["Descripcion"].Value != null)
+                    {
+                        txtDescripcion.Text = dgvData.Rows[indice].Cells["Descripcion"].Value.ToString();
+                    }
+                    else
+                    {
+                        txtDescripcion.Text = string.Empty;
+                    }
 
                     foreach (OpcionesCombo opcion_Combo in cmbEstado.Items)
                     {
-                        if (Convert.ToInt32(opcion_Combo.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["EstadoValor"].Value))
+
+                        if (dgvData.Rows[indice].Cells["EstadoValor"].Value != null && int.TryParse(dgvData.Rows[indice].Cells["EstadoValor"].Value.ToString(), out int estadoValor))
                         {
-                            int indice_combo = cmbEstado.Items.IndexOf(opcion_Combo);
-                            cmbEstado.SelectedIndex = indice_combo;
-                            break;
+                            if (Convert.ToInt32(opcion_Combo.Valor) == estadoValor)
+                            {
+                                int indice_combo = cmbEstado.Items.IndexOf(opcion_Combo);
+                                cmbEstado.SelectedIndex = indice_combo;
+                                break;
+                            }
                         }
                     }
                 }

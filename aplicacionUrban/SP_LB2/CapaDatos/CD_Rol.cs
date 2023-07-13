@@ -12,6 +12,10 @@ namespace CapaDatos
 {
     public class CD_Rol 
     {
+        /// <summary>
+        /// Obtiene una lista de roles desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de roles.</returns>
         public List<Rol> Listar()
         {
             List<Rol> listaUsuario = new List<Rol>();
@@ -44,6 +48,10 @@ namespace CapaDatos
                 return listaUsuario;
             }
         }
+        /// <summary>
+        /// Genera la consulta SQL para obtener los datos de los roles.
+        /// </summary>
+        /// <returns>Consulta SQL.</returns>
         public static string MostrarDatosRol()
         {
             StringBuilder query = new StringBuilder();

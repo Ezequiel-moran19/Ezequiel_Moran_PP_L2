@@ -35,6 +35,8 @@
             txt_Contraseña = new TextBox();
             label2 = new Label();
             label3 = new Label();
+            cboUsuarios = new ComboBox();
+            label4 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -103,10 +105,11 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
             label2.Location = new Point(303, 121);
             label2.Name = "label2";
-            label2.Size = new Size(93, 15);
+            label2.Size = new Size(96, 13);
             label2.TabIndex = 13;
             label2.Text = "Nro Documento";
             // 
@@ -114,12 +117,34 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
             label3.Location = new Point(303, 174);
             label3.Name = "label3";
-            label3.Size = new Size(67, 15);
+            label3.Size = new Size(81, 14);
             label3.TabIndex = 14;
             label3.Text = "Contraseña";
+            // 
+            // cboUsuarios
+            // 
+            cboUsuarios.FormattingEnabled = true;
+            cboUsuarios.Location = new Point(106, 166);
+            cboUsuarios.Name = "cboUsuarios";
+            cboUsuarios.Size = new Size(121, 23);
+            cboUsuarios.TabIndex = 15;
+            cboUsuarios.SelectedIndexChanged += cboUsuarios_SelectedIndexChanged;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = Color.Transparent;
+            label4.Location = new Point(106, 139);
+            label4.Name = "label4";
+            label4.Size = new Size(109, 13);
+            label4.TabIndex = 16;
+            label4.Text = "Selecione Usuario";
             // 
             // FrmLogin
             // 
@@ -129,6 +154,8 @@
             BackColor = Color.Black;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(760, 369);
+            Controls.Add(label4);
+            Controls.Add(cboUsuarios);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -145,6 +172,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             FormClosing += Login_FormClosing;
+            Load += FrmLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -158,5 +186,7 @@
         private TextBox txt_Contraseña;
         private Label label2;
         private Label label3;
+        private ComboBox cboUsuarios;
+        private Label label4;
     }
 }

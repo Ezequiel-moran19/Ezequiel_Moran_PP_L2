@@ -133,10 +133,10 @@
             // 
             label10.AutoSize = true;
             label10.BackColor = Color.White;
-            label10.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(523, 106);
+            label10.Font = new Font("Verdana", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Location = new Point(507, 107);
             label10.Name = "label10";
-            label10.Size = new Size(65, 13);
+            label10.Size = new Size(81, 13);
             label10.TabIndex = 122;
             label10.Text = "Buscar por:";
             // 
@@ -153,7 +153,7 @@
             // 
             label1.BackColor = Color.White;
             label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Verdana", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(206, 89);
             label1.Name = "label1";
             label1.Size = new Size(750, 47);
@@ -324,10 +324,10 @@
             // 
             label7.AutoSize = true;
             label7.BackColor = Color.White;
-            label7.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             label7.Location = new Point(16, 276);
             label7.Name = "label7";
-            label7.Size = new Size(42, 13);
+            label7.Size = new Size(45, 13);
             label7.TabIndex = 112;
             label7.Text = "Estado";
             // 
@@ -365,10 +365,10 @@
             // 
             label4.AutoSize = true;
             label4.BackColor = Color.White;
-            label4.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(15, 228);
             label4.Name = "label4";
-            label4.Size = new Size(51, 13);
+            label4.Size = new Size(55, 13);
             label4.TabIndex = 104;
             label4.Text = "Telefono";
             // 
@@ -376,10 +376,10 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.White;
-            label3.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(16, 188);
             label3.Name = "label3";
-            label3.Size = new Size(45, 13);
+            label3.Size = new Size(52, 13);
             label3.TabIndex = 103;
             label3.Text = "Correo:";
             // 
@@ -387,10 +387,10 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.White;
-            label2.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(15, 149);
             label2.Name = "label2";
-            label2.Size = new Size(106, 13);
+            label2.Size = new Size(116, 13);
             label2.TabIndex = 102;
             label2.Text = "Nombre Completo:";
             // 
@@ -398,10 +398,10 @@
             // 
             label9.AutoSize = true;
             label9.BackColor = Color.White;
-            label9.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             label9.Location = new Point(16, 110);
             label9.Name = "label9";
-            label9.Size = new Size(91, 13);
+            label9.Size = new Size(101, 13);
             label9.TabIndex = 101;
             label9.Text = "Nro Documento:";
             // 

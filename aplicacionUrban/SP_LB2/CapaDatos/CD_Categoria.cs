@@ -11,6 +11,10 @@ namespace CapaDatos
 {
     public class CD_Categoria : IMIInterfaz<Categoria>
     {
+        /// <summary>
+        /// Obtiene una lista de categorías desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de categorías.</returns>
         public List<Categoria> Listar()
         {
             List<Categoria> listaCategoria = new List<Categoria>();
@@ -40,7 +44,12 @@ namespace CapaDatos
 
             return listaCategoria;
         }
-
+        /// <summary>
+        /// Registra una nueva categoría en la base de datos.
+        /// </summary>
+        /// <param name="obj">Objeto Categoria a registrar.</param>
+        /// <param name="mensaje">Mensaje de resultado de la operación.</param>
+        /// <returns>Id de la categoría generada.</returns>
         public int Registrar(Categoria obj, out string mensaje)
         {
             int idCategoriaGenerado = 0;
@@ -66,7 +75,12 @@ namespace CapaDatos
 
             return idCategoriaGenerado;
         }
-
+        /// <summary>
+        /// Edita una categoría existente en la base de datos.
+        /// </summary>
+        /// <param name="obj">Objeto Categoria a editar.</param>
+        /// <param name="mensaje">Mensaje de resultado de la operación.</param>
+        /// <returns>Indicador de éxito de la operación.</returns>
         public bool Editar(Categoria obj, out string mensaje)
         {
             bool respuesta = false;
@@ -94,7 +108,12 @@ namespace CapaDatos
 
             return respuesta;
         }
-
+        /// <summary>
+        /// Elimina una categoría de la base de datos.
+        /// </summary>
+        /// <param name="obj">Objeto Categoria a eliminar.</param>
+        /// <param name="mensaje">Mensaje de resultado de la operación.</param>
+        /// <returns>Indicador de éxito de la operación.</returns>
         public bool Eliminar(Categoria obj, out string mensaje)
         {
             bool respuesta = false;
@@ -120,6 +139,10 @@ namespace CapaDatos
 
             return respuesta;
         }
+        /// <summary>
+        /// Genera la consulta SQL para obtener los datos de las categorías.
+        /// </summary>
+        /// <returns>Consulta SQL.</returns>
         public string MostrarConsultas()
         {
             StringBuilder query = new StringBuilder();
@@ -127,7 +150,11 @@ namespace CapaDatos
 
             return query.ToString();
         }
-
+        /// <summary>
+        /// Obtiene un objeto Categoria a partir de los datos obtenidos desde el SqlDataReader.
+        /// </summary>
+        /// <param name="dr">SqlDataReader con los datos de la categoría.</param>
+        /// <returns>Objeto Categoria.</returns>
         private Categoria ObtenerDesdeDataReader(SqlDataReader dr)
         {
             int idCategoria = Convert.ToInt32(dr["IdCategoria"]);
@@ -138,145 +165,3 @@ namespace CapaDatos
         }
     }
 }
-/*
-public List<Categoria> Listar()
-        {
-            List<Categoria> listaCategoria = new List<Categoria>();
-
-            using (SqlConnection connection = Conexion.GetConnection())
-            {
-                try
-                {
-                    SqlCommand cmd = new SqlCommand(MostrarConsultas(), connection);
-                    cmd.CommandType = CommandType.Text;
-
-                    connection.Open();
-
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            listaCategoria.Add(ObtenerDesdeDataReader(dr));
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    listaCategoria = new List<Categoria>();
-                }
-                return listaCategoria;
-            }
-        }
-        private Categoria ObtenerDesdeDataReader(SqlDataReader dr)
-        {
-            int idCategoria = Convert.ToInt32(dr["IdCategoria"]);
-            string? descripcion = dr["Descripcion"].ToString();
-            bool estado = Convert.ToBoolean(dr["Estado"]);
-            return new Categoria(idCategoria, descripcion, estado);
-        }
-        public int Registrar(Categoria obj, out string Mensaje)
-        {
-            int idCategoriagenerado = 0;
-            Mensaje = string.Empty;
-
-            try
-            {
-                using (SqlConnection connection = Conexion.GetConnection())
-                {
-                    SqlCommand cmd = new SqlCommand("SP_RegistrarCategoria", connection);
-                    cmd.Parameters.AddWithValue("Descripcion", obj.Descripcion);
-                    cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-
-                    idCategoriagenerado = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
-                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                idCategoriagenerado = 0;
-                Mensaje = ex.Message;
-            }
-            return idCategoriagenerado;
-        }
-
-        public bool Editar(Categoria obj, out string Mensaje)
-        {
-            bool respuesta = false;
-            Mensaje = string.Empty;
-
-            try
-            {
-                using (SqlConnection connection = Conexion.GetConnection())
-                {
-                    SqlCommand cmd = new SqlCommand("SP_EditarCatgoeria", connection);
-                    cmd.Parameters.AddWithValue("IdCategoria", obj.IdCategoria);
-                    cmd.Parameters.AddWithValue("Descripcion", obj.Descripcion);
-                    cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-
-                    respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
-                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                respuesta = false;
-                Mensaje = ex.Message;
-            }
-            return respuesta;
-        }
-        public bool Eliminar(Categoria obj, out string Mensaje)
-        {
-            bool respuesta = false;
-            Mensaje = string.Empty;
-
-            try
-            {
-                using (SqlConnection connection = Conexion.GetConnection())
-                {
-                    SqlCommand cmd = new SqlCommand("SP_EliminarCategoria", connection);
-                    cmd.Parameters.AddWithValue("IdCategoria", obj.IdCategoria);
-                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-
-                    respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
-                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                respuesta = false;
-                Mensaje = ex.Message;
-            }
-            return respuesta;
-        }
-        public string MostrarConsultas()
-        {
-            StringBuilder query = new StringBuilder();
-            query.AppendLine("select IdCategoria,Descripcion,Estado From CATEGORIA");
-           
-            return query.ToString();
-        }
-        private void ConfigurarParametros(SqlCommand cmd, Categoria obj)
-        {
-            cmd.Parameters.AddWithValue("Descripcion", obj.Descripcion);
-            cmd.Parameters.AddWithValue("Estado", obj.Estado);
-            cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
-            cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-        }
- */
